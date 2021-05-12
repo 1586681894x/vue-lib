@@ -1,0 +1,87 @@
+.image-preview-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.6);
+	transition: all 0.3s;
+	display: none;
+	color: #fff;
+	will-change: transform;
+	user-select: none;
+}
+.image-preview-container.show {
+	animation: show 0.5s forwards;
+	-webkit-animation: show 0.5s forwards;
+}
+.image-preview-container.hiding .preview-header {
+	animation: opacityAnimation 0.5s forwards reverse;
+}
+.image-preview-container img {
+	transition: all 0.5s;
+	transform: translateX(var(--offsetX)) translateY(var(--offsetY)) translateZ(0) scale(var(--scale), var(--scale));
+}
+.image-preview-container .image-container {
+	width: 100% !important;
+	height: 100% !important;
+	overflow: hidden;
+}
+.image-preview-container .preview-header {
+	height: 60px;
+	background: rgba(0, 0, 0, 0.2);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 20px;
+	position: relative;
+	z-index: 90;
+	animation: opacityAnimation 0.5s forwards;
+}
+.image-preview-container .preview-header .nums {
+	font-weight: 200;
+}
+.image-preview-container .preview-header button {
+	background: none;
+	border: none;
+	outline: none;
+	font-size: 18px;
+	color: #fff;
+	margin-left: 10px;
+	padding: 7px;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+	position: relative;
+	width: 27px;
+	height: 27px;
+}
+.image-preview-container .preview-header button svg {
+	position: absolute;
+	left: 50%;
+	right: 50%;
+	transform: translate(-50%, -50%);
+}
+.image-preview-container .preview-header button:hover {
+	background: rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+}
+@keyframes show {
+	0% {
+		background: rgba(0, 0, 0, 0);
+	}
+	100% {
+		background: rgba(0, 0, 0, 0.6);
+	}
+}
+@keyframes opacityAnimation {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
